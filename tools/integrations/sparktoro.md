@@ -6,27 +6,25 @@ Audience research platform that reveals what your target audience reads, watches
 
 | Integration | Available | Notes |
 |-------------|-----------|-------|
-| API | - | Not yet public (coming soon) |
-| MCP | - | Not available |
+| API | Yes | Magister uses the company-managed SparkToro REST API through built-in audience-research actions |
+| MCP | Yes | SparkToro also offers a separate OAuth MCP connection for customer-owned accounts |
 | CLI | - | Not available |
 | SDK | - | Not available |
 
-SparkToro is primarily a web-based research tool. No public API, CLI, or SDK is currently available. Use the web interface at https://sparktoro.com for all queries.
+Use Magister's built-in actions for product workflows. Do not scrape the SparkToro web app or call SparkToro's raw endpoints from an agent.
 
 ## Authentication
 
-- **Type**: Account login at https://sparktoro.com
-- **Free tier**: 5 reports/month with limited results
-- **Paid plans**: $50–$300/month with expanded results and exports
+- **Magister runtime**: Company-provided server credential; users do not paste or manage a SparkToro API key
+- **Direct REST API**: Bearer API key and prepaid credits, separate from SparkToro subscriptions
+- **SparkToro MCP**: OAuth 2.1 against the user's own SparkToro account; separate from Magister's built-in REST integration
 
-## Pricing Tiers
+## API Credits
 
-| Plan | Price | Reports/Month | Users | Result Depth |
-|------|-------|---------------|-------|-------------|
-| Free | $0 | 5 | 1 | Top 5–10 results |
-| Personal | $50/mo | 50 | 1 | Top 50 results |
-| Business | $150/mo | 500 | 10 | Top 150 results, contact data, AI advice |
-| Agency | $300/mo | Unlimited | 100 | Top 300 results, full CSV export |
+- Creating an audience report costs provider credits; requested sections add variable cost.
+- Re-reading the same section for the same report is free after its first successful purchase.
+- Magister always estimates customer credits before a run and settles the actual charge when the durable research job completes.
+- API bundles, trial allowances, and endpoint prices can change; use SparkToro's current API credit page as the source of truth.
 
 ## What SparkToro Reveals
 
@@ -55,11 +53,18 @@ SparkToro is primarily a web-based research tool. No public API, CLI, or SDK is 
 
 ## Common Agent Operations
 
-Since SparkToro has no API, these are the research workflows agents should guide users through.
+Use the three built-in actions in this order:
+
+1. `estimate_audience_research` with a precise audience, location, and workflow profile.
+2. Show the scope and estimated credits, then obtain explicit user confirmation.
+3. Call `start_audience_research` once with a stable idempotency key.
+4. Poll `get_audience_research` until it reaches a terminal state.
+
+Choose the narrowest profile that answers the decision: `campaign_brief`, `influencer_media`, `content_demand`, `icp_validation`, or `ai_positioning`. Use `custom` only when the needed sections do not fit a standard profile.
 
 ### Audience Profile Research
 
-Query SparkToro with phrases like:
+Describe one concrete audience with signals such as:
 - "People who follow @competitor" — reveals shared audience behaviors
 - "People who visit competitor.com" — shows what else they consume
 - "People who frequently talk about [topic]" — finds audience affinities
@@ -67,29 +72,28 @@ Query SparkToro with phrases like:
 
 ### Finding Where Your ICP Spends Time
 
-1. Search for your ICP by description, competitor followers, or website visitors
-2. Extract: top websites visited, podcasts listened to, YouTube channels watched, subreddits
-3. Use this to prioritize: guest podcast appearances, content partnerships, ad placements, community participation
+1. Define the ICP by role, problem, behavior, competitor affinity, or website affinity.
+2. Run the `influencer_media` profile after estimate and confirmation.
+3. Turn the policy-safe result into a prioritized outreach, sponsorship, or community-testing plan.
 
 ### Discovering Content Topics
 
-1. Search your audience segment
-2. Review the "Search Keywords" tab — what they Google
-3. Review the "AI Prompt Topics" tab — what they ask AI tools
-4. Use these to inform content strategy and SEO keyword targeting
+1. Define the audience segment and the content decision to make.
+2. Run `content_demand` for search and channel demand, or `ai_positioning` for AI-question patterns.
+3. Use the resulting themes as hypotheses, then validate exact keywords with DataForSEO before committing SEO or paid-search budget.
 
 ### Building Data-Backed Personas
 
-1. Run 3–5 queries for different segments of your audience
-2. Compare demographic breakdowns across segments
-3. Note which behaviors and affinities are shared vs. unique per segment
-4. Export data and build personas grounded in observed behavior, not assumptions
+1. Propose distinct, precise segment descriptions.
+2. Estimate each run before asking the user which segments to purchase.
+3. Run `icp_validation` separately for each approved segment.
+4. Compare the derived evidence and design follow-up qualitative research for the "why."
 
 ### Competitive Audience Analysis
 
-1. Search "People who follow @competitor" or "People who visit competitor.com"
-2. Compare against your own audience profile
-3. Identify: channels they use that you don't, content they consume that you don't produce, influencers they follow that you haven't engaged
+1. Describe the competitor-affinity audience and the brand's intended audience as separate segments.
+2. Estimate both; do not purchase both without explicit approval.
+3. Compare the completed derived results for channel, message, and experiment gaps.
 
 ## Data Sources
 
@@ -111,8 +115,9 @@ SparkToro aggregates from three sources:
 
 ## Limitations
 
-- No public API — all research is done through the web interface
-- Free tier limited to 5 reports/month with shallow results
+- Research is paid and variable-cost; estimate and confirm before every new or refreshed report
+- Magister exposes policy-safe derived outputs by default, not raw provider payloads, identifiers, rankings, scores, percentages, or source lists
+- External display of SparkToro data points requires a separate written agreement and attribution; derived output mode does not reproduce those data points
 - Data skews toward English-language, US-centric audiences
 - Clickstream data may not capture all niche audiences
 - Cannot track individual users — all data is aggregated and anonymized

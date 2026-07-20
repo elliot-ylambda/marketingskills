@@ -19,7 +19,7 @@ Current versions of all skills. Agents can compare against local versions to che
 | copy-editing | 2.0.0 | 2026-05-05 |
 | copywriting | 2.0.1 | 2026-06-16 |
 | cro | 2.0.0 | 2026-05-05 |
-| customer-research | 2.0.1 | 2026-07-10 |
+| customer-research | 2.0.2 | 2026-07-20 |
 | directory-submissions | 2.0.0 | 2026-05-05 |
 | emails | 2.0.0 | 2026-05-05 |
 | free-tools | 2.0.0 | 2026-05-05 |
@@ -53,6 +53,10 @@ Current versions of all skills. Agents can compare against local versions to che
 | video | 2.1.0 | 2026-07-14 |
 
 ## Recent Changes
+
+### 2.8.13 (2026-07-20)
+
+- **customer-research** (2.0.1 → 2.0.2): corrected obsolete SparkToro availability guidance now that the public REST API and OAuth MCP server are available. The integration reference documents Magister's built-in estimate → confirm → start → poll workflow, decision-focused profiles, variable-cost guardrails, and the derived-output boundary required for customer-facing use.
 
 ### 2.8.12 (2026-07-16)
 

@@ -328,12 +328,12 @@ SparkToro data is aggregated and anonymized — it shows patterns, not individua
 
 ### Limitations
 
-- Free tier: 5 reports/month, shallow results (top 5–10)
-- No public API — all research done through web interface
+- Magister uses a built-in, variable-cost API workflow: estimate, confirm, start, then poll
+- Product output is policy-safe and derived by default; raw SparkToro payloads, identifiers, rankings, scores, percentages, and source lists are not exposed
 - Skews English-language, US-centric
 - Shows what audiences do, not why — pair with qualitative sources
 
-See [tools/integrations/sparktoro.md](../../../tools/integrations/sparktoro.md) for full tool details and pricing.
+See [tools/integrations/sparktoro.md](../../../tools/integrations/sparktoro.md) for the built-in workflow, profiles, and cost guardrails.
 
 ---
 
