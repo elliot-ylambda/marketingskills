@@ -42,9 +42,10 @@ Before auditing, understand:
 Many CMS plugins (AIOSEO, Yoast, RankMath) inject JSON-LD via client-side JavaScript — it won't appear in static HTML or `web_fetch` output (which strips `<script>` tags during conversion).
 
 **To accurately check for schema markup, use one of these methods:**
-1. **Browser tool** — render the page and run: `document.querySelectorAll('script[type="application/ld+json"]')`
+1. **Firecrawl** (`magister-firecrawl` skill) — scrape the page with `"formats": ["rawHtml"]` and search the rendered DOM for `<script type="application/ld+json">`. Renders JavaScript and works unattended — this is the default method.
 2. **Google Rich Results Test** — https://search.google.com/test/rich-results
-3. **Screaming Frog export** — if the client provides one, use it (SF renders JavaScript)
+3. **Browser tool** (attended sessions only — needs the user's Chrome connected) — render the page and run: `document.querySelectorAll('script[type="application/ld+json"]')`
+4. **Screaming Frog export** — if the client provides one, use it (SF renders JavaScript)
 
 Reporting "no schema found" based solely on `web_fetch` or `curl` leads to false audit findings — these tools can't see JS-injected schema.
 
@@ -467,7 +468,7 @@ Same format as above
 - Mobile-Friendly Test
 - Schema Validator
 
-> **Note on schema detection:** `web_fetch` strips `<script>` tags (including JSON-LD) and cannot detect JS-injected schema. Use the browser tool, Rich Results Test, or Screaming Frog instead — they render JavaScript and capture dynamically-injected markup. See the Schema Markup Detection Limitation section above.
+> **Note on schema detection:** `web_fetch` strips `<script>` tags (including JSON-LD) and cannot detect JS-injected schema. Use Firecrawl (`magister-firecrawl`, `rawHtml` format), the Rich Results Test, or Screaming Frog instead — they render JavaScript and capture dynamically-injected markup. See the Schema Markup Detection Limitation section above.
 
 **Paid Tools** (if available)
 - Screaming Frog
