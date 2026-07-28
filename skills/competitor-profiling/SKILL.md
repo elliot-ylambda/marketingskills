@@ -80,10 +80,12 @@ For each competitor URL, scrape key pages to extract positioning, features, pric
 
 #### Step 1: Map the site
 
-Use **Firecrawl Map** to discover the competitor's site structure and identify key pages:
+Use **Firecrawl `map`** (via the `magister-firecrawl` skill — gateway proxy
+`/proxy/firecrawl`, `POST v2/map`) to discover the competitor's site structure
+and identify key pages:
 
 ```
-firecrawl_map → competitor URL
+firecrawl map → competitor URL
 ```
 
 From the map, identify and prioritize these page types:
@@ -98,10 +100,11 @@ From the map, identify and prioritize these page types:
 
 #### Step 2: Scrape key pages
 
-Use **Firecrawl Scrape** on each identified page:
+Use **Firecrawl `scrape`** (via the `magister-firecrawl` skill — `POST
+v2/scrape`, markdown format; it renders JavaScript) on each identified page:
 
 ```
-firecrawl_scrape → each key page URL
+firecrawl scrape → each key page URL
 ```
 
 Save each result to `competitor-profiles/raw/<competitor-slug>/<YYYY-MM-DD>/scrapes/<page-name>.md` before extracting fields.
@@ -120,7 +123,8 @@ Extract from each page:
 
 #### Step 3: Scrape competitor reviews (optional but high-value)
 
-Use **Firecrawl Scrape** or **Firecrawl Search** to find:
+Find the review URLs with web search (Brave/Exa), then use **Firecrawl
+`scrape`** on:
 - G2 reviews page for the competitor
 - Capterra reviews page
 - Product Hunt launch page

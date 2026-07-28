@@ -343,10 +343,10 @@ Programmatic page extraction for **individual public business sites** — not fo
 
 | Tool | Best For | Notes |
 |------|----------|-------|
-| **firecrawl** | Page → clean markdown / structured extraction | API + MCP; lower overhead for "just give me the content" |
-| **browserbase** | Real Chromium when rendering, interaction, or session state is required | API + MCP (Stagehand); use when Firecrawl can't handle the page |
+| **firecrawl** | Page/site → clean markdown / structured extraction; renders JavaScript (headless browser upstream) | On Magister: `magister-firecrawl` skill via the gateway proxy — no separate key |
+| **browserbase** | Real Chromium when interaction or session state is required | Not provisioned on Magister — use the attended `browser` tool (user's connected Chrome) instead |
 
-**Agent recommendation**: Default to Firecrawl for static-ish pages and structured extraction. Use Browserbase when the site requires JS rendering, form interaction, cookie consent, or auth — and when you want session recordings for debugging. **For both: discovery happens on platforms (manual browser); extraction happens on the prospect's own website URL.** Don't point either tool at LinkedIn, Google Maps, Yelp, or similar.
+**Agent recommendation**: Default to Firecrawl for page reading, JS-heavy pages, whole-site crawls, and structured extraction — it renders JavaScript. Reach for a real browser only when the task needs interaction, form-fill, cookie consent, or an authenticated session (on Magister that is the attended `browser` tool; outside Magister, Browserbase). **For both: discovery happens on platforms (manual browser); extraction happens on the prospect's own website URL.** Don't point either tool at LinkedIn, Google Maps, Yelp, or similar.
 
 ### Reviews
 
