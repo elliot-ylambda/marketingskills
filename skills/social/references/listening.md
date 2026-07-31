@@ -7,7 +7,7 @@ How to surface the right posts to engage with each day — instead of randomly s
 - The daily triage loop
 - Scoring rubric
 - Comment quality tiers
-- Sources & light tooling (curl recipes)
+- Sources & typed Hosted Agent actions
 - Per-platform notes
 - Common workflows
 
@@ -30,7 +30,9 @@ If the user wants to **create** content, use the rest of the social skill. Liste
 
 A repeatable 20-minute loop the user (or you, on their behalf) can run each morning.
 
-1. **Pull** — fetch new posts from defined sources (target accounts, keywords, subreddits, hashtags). See [tooling](#sources--light-tooling-curl-recipes).
+1. **Pull** — fetch new posts from defined sources (target accounts, keywords,
+   subreddits, hashtags). See
+   [tooling](#sources--typed-hosted-agent-actions).
 2. **Filter** — drop anything older than 24h, low signal, or off-topic.
 3. **Score** — apply the [rubric](#scoring-rubric). Keep top 10.
 4. **Draft** — for each, draft a comment matched to the post's tier.
@@ -103,81 +105,37 @@ Match the comment to the post. Don't waste a tier-1 draft on a tier-3 opportunit
 
 ---
 
-## Sources & Light Tooling (curl recipes)
+## Sources & Typed Hosted Agent Actions
 
-These are public JSON endpoints — no auth needed. Run them from bash, pipe to `jq`, and Claude can parse the output to score and draft comments.
+Shell networking is unavailable. Never call a public feed or API from a shell,
+even when it needs no authentication.
 
-**Requires:** `jq` (most recipes) and `xmllint` (RSS only). Install once:
-```bash
-# macOS
-brew install jq
-# xmllint ships with macOS; on Linux: apt install libxml2-utils
-```
+Use this reviewed order:
 
-### Reddit (free, scriptable)
+1. Use the `magister-social-research` skill and
+   `magister_integration_read` for its documented Reddit, YouTube, LinkedIn,
+   and other supported social-search routes.
+2. Use `magister-exa` through the typed read action for recent web results and
+   known-page contents.
+3. Use `magister-firecrawl` through the typed read action when a public page or
+   feed needs rendering or extraction.
+4. If none of those reviewed actions represents the exact source, return
+   `execution_unavailable` and give the user a direct page to inspect. Do not
+   substitute a shell request or invent a provider credential.
 
-**New posts in a subreddit:**
-```bash
-curl -s -A "listening/1.0" \
-  "https://www.reddit.com/r/SaaS/new.json?limit=25" \
-  | jq '.data.children[].data | {title, author, url: ("https://reddit.com"+.permalink), score, num_comments, created_utc, selftext: (.selftext | .[0:300])}'
-```
+Keep `KEYWORD`, subreddit, channel, time range, and pagination values in the
+typed action's documented query/body fields. Normalize successful results into
+the Top 10 format above before scoring them.
 
-**Search across Reddit by keyword (last day, sorted new):**
-```bash
-curl -s -A "listening/1.0" \
-  "https://www.reddit.com/search.json?q=KEYWORD&sort=new&t=day&limit=25" \
-  | jq '.data.children[].data | {subreddit, title, url: ("https://reddit.com"+.permalink), author, score, created_utc}'
-```
+### LinkedIn & X — reviewed access only
 
-Swap `KEYWORD` for things like `"alternative to notion"`, `"recommend a crm"`, your competitor names, or your own brand for mentions. Use quotes around multi-word phrases.
+Prefer the typed social-research routes. An attended browser may be used only
+when that browser tool is actually advertised in the current session and the
+user controls its authenticated state. Hosted Agent browser automation is not
+a fallback: when no reviewed social route or attended browser exists, return
+`execution_unavailable` and ask the user to paste the posts or export a list.
 
-### Hacker News (Algolia search)
-
-**Recent stories mentioning a keyword (last 24h):**
-```bash
-SINCE=$(($(date +%s) - 86400))
-curl -s "https://hn.algolia.com/api/v1/search_by_date?query=KEYWORD&tags=story&numericFilters=created_at_i>${SINCE}" \
-  | jq '.hits[] | {title, url, author, points, num_comments, created_at, story_id: .objectID, hn_url: ("https://news.ycombinator.com/item?id="+.objectID)}'
-```
-
-**Recent comments mentioning a keyword:**
-```bash
-curl -s "https://hn.algolia.com/api/v1/search_by_date?query=KEYWORD&tags=comment&numericFilters=created_at_i>${SINCE}" \
-  | jq '.hits[] | {author, comment_text, story_title, hn_url: ("https://news.ycombinator.com/item?id="+.objectID)}'
-```
-
-### Bluesky (free, public API)
-
-**Search posts by keyword:**
-```bash
-curl -s "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=KEYWORD&limit=25&sort=latest" \
-  | jq '.posts[] | {author: .author.handle, text: .record.text, likes: .likeCount, replies: .replyCount, url: ("https://bsky.app/profile/"+.author.handle+"/post/"+(.uri | split("/") | last))}'
-```
-
-### RSS for blogs, podcasts, YouTube channels
-
-For target accounts that publish to RSS (most blogs, all YouTube channels):
-```bash
-# YouTube channel feed (replace CHANNEL_ID)
-curl -s "https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID"
-
-# Generic blog feed
-curl -s "https://example.com/feed/" | xmllint --xpath "//item[position()<6]" - 2>/dev/null
-```
-
-### LinkedIn & X — use the browser
-
-LinkedIn and X don't expose useful public APIs, but you can drive a real browser session. **dev-browser** (MCP, already in the global setup) and **Playwright** both maintain persistent state — log in once, the session stays alive, Claude can navigate the authenticated feed.
-
-**dev-browser workflow (preferred — already wired up):**
-1. User logs into LinkedIn / X once in the dev-browser session
-2. Claude navigates to a target URL (feed, profile, saved search, hashtag)
-3. Claude reads the accessibility tree / page text, extracts posts
-4. Claude scores using the [rubric](#scoring-rubric) and drafts comments
-5. User reviews and posts manually (don't auto-post — high-stakes, bot detection risk)
-
-**Useful URLs to feed dev-browser:**
+**Useful URLs for the user or an explicitly available attended browser:**
 
 | URL pattern | What it shows |
 |-------------|---------------|
@@ -208,14 +166,16 @@ LinkedIn and X don't expose useful public APIs, but you can drive a real browser
 ## Per-Platform Notes
 
 ### LinkedIn
-- **Browser-driven** (dev-browser with persistent session) — see [LinkedIn & X — use the browser](#linkedin--x--use-the-browser)
+- **Reviewed route or attended browser only** — see
+  [LinkedIn & X — reviewed access only](#linkedin--x--reviewed-access-only)
 - **First-hour comments matter most** — algorithm weights early engagement heavily. Prioritize posts <2h old from target accounts.
 - Comments with 5+ words get more reach than reactions
 - Replying to other commenters can put you in front of their network
 - Tag the author in your reply only if it adds context
 
 ### Twitter/X
-- **Browser-driven** (dev-browser) — build a private list of target accounts and point dev-browser at the list URL
+- **Reviewed route or attended browser only** — build a private list of target
+  accounts and use it only through a currently advertised tool
 - Reply within first 30 min for max reach on big accounts
 - Quote-tweet > reply when adding substantial value
 - Threading your reply (multi-tweet) signals effort

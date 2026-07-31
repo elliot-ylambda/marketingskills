@@ -2,6 +2,15 @@
 
 Reference for using AI image generators, video generators, and code-based video tools to produce ad visuals at scale.
 
+## Hosted Agent execution status
+
+This file is planning/reference material. Direct provider generation, upload,
+download, local HTTP services, and provider credentials are
+`execution_unavailable` unless the current session advertises a purpose-built
+typed media action. Never turn an API example from provider documentation into
+a shell request. Use the typed media action's schema when available; otherwise
+prepare the prompt/spec and hand it to the user.
+
 ---
 
 ## When to Use Generative Tools
@@ -44,17 +53,10 @@ Google DeepMind's image generation model, available through the Gemini API.
 - Edit existing ad images (swap backgrounds, change colors)
 - Generate images with headline text baked in
 
-**API example:**
-```bash
-# Using the Gemini API for image generation
-curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
-  -H "Content-Type: application/json" \
-  -H "x-goog-api-key: $GEMINI_API_KEY" \
-  -d '{
-    "contents": [{"parts": [{"text": "Create a clean, modern social media ad image for a project management tool. Show a laptop with a kanban board interface. Bright, professional, 16:9 ratio."}]}],
-    "generationConfig": {"responseModalities": ["TEXT", "IMAGE"]}
-  }'
-```
+**Hosted Agent use:** prepare the prompt, dimensions, reference-asset IDs, and
+brand constraints. Invoke a purpose-built typed Gemini image action only if it
+is advertised; otherwise return `execution_unavailable` and let the user run
+the prompt in their chosen image product.
 
 **Docs:** [Gemini Image Generation](https://ai.google.dev/gemini-api/docs/image-generation)
 
@@ -317,17 +319,10 @@ The market leader in realistic voice generation and voice cloning.
 - Produce the same ad in 10+ languages from one script
 - A/B test different voice styles (authoritative vs. friendly vs. urgent)
 
-**API example:**
-```bash
-curl -X POST "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}" \
-  -H "xi-api-key: $ELEVENLABS_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "text": "Stop wasting hours on manual reporting. Try DataFlow free for 14 days.",
-    "model_id": "eleven_multilingual_v2",
-    "voice_settings": {"stability": 0.5, "similarity_boost": 0.75}
-  }' --output voiceover.mp3
-```
+**Hosted Agent use:** prepare the script, approved voice identifier, language,
+and style controls. Invoke a purpose-built typed voice action only if it is
+advertised; otherwise return `execution_unavailable`. Audio bytes must arrive
+as a project asset, never through a model-directed download.
 
 **Docs:** [ElevenLabs API](https://elevenlabs.io/docs/api-reference/text-to-speech)
 
@@ -404,18 +399,14 @@ Free, local-first voice synthesis studio powered by Qwen3-TTS. The open-source a
 - Private/local generation when ad content is sensitive or pre-launch
 - Prototype voice variations before committing to a paid service
 
-**API example:**
-```bash
-curl -X POST http://localhost:8000/generate \
-  -H "Content-Type: application/json" \
-  -d '{"text": "Stop wasting hours on manual reporting.", "profile_id": "abc123", "language": "en"}'
-```
+**Hosted Agent use:** a loopback server is not reachable from sandboxed shell.
+Return `execution_unavailable` unless a reviewed typed local-media adapter is
+advertised; never weaken the sandbox for this workflow.
 
-**Install:** Desktop apps for macOS and Windows at [voicebox.sh](https://voicebox.sh), or build from source:
-```bash
-git clone https://github.com/jamiepine/voicebox.git
-cd voicebox && make setup && make dev
-```
+**Install:** installation and source retrieval are user-side prerequisites.
+Hosted Agent must not clone, install, start, or call the loopback service. Once
+a reviewed local-media adapter is advertised, use that adapter; otherwise
+return `execution_unavailable`.
 
 **Docs:** [GitHub](https://github.com/jamiepine/voicebox)
 
@@ -558,11 +549,11 @@ Render the same content across different aspect ratios:
 
 ### Getting Started
 
-```bash
-# Create a new Remotion project
-npx create-video@latest
+Use an existing Remotion project with dependencies already present. Remote
+package bootstrap is not available from Hosted Agent. Local renders may use:
 
-# Render a single video
+```bash
+# Render a single video from the existing project
 npx remotion render src/index.ts MyComposition out/video.mp4
 
 # Batch render from data

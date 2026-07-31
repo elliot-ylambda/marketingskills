@@ -2,7 +2,7 @@
 name: video
 description: "When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the user mentions 'video production,' 'AI video,' 'Remotion,' 'Hyperframes,' 'HeyGen,' 'Synthesia,' 'Veo,' 'Sora,' 'Runway,' 'Kling,' 'Seedance,' 'Hailuo,' 'MiniMax,' 'Pika,' 'Hunyuan,' 'Wan,' 'video generation,' 'AI avatar,' 'talking head video,' 'programmatic video,' 'video template,' 'explainer video,' 'product demo video,' 'video pipeline,' 'copy this edit,' 'match this video style,' 'reverse-engineer this video,' 'edit like this reference,' or 'make me a video.' Use this for video creation, generation, and production workflows. For video content strategy and what to post, see social. For paid video ad creative, see ad-creative."
 metadata:
-  version: 2.1.0
+  version: 2.1.1
 ---
 
 # Video
@@ -55,9 +55,9 @@ Build videos with code. Best for repeatable, templated, or data-driven video at 
 
 Open-source, Apache 2.0, from HeyGen. Uses plain HTML/CSS/JS — no framework DSL to learn. LLM-native: AI models generate better HTML than React components.
 
-```bash
-npm install hyperframes
-```
+Hyperframes must already be available in the project or image. Package
+installation is a user/image-build prerequisite and is not performed by the
+Hosted Agent sandbox.
 
 **Key concept:** Each frame is an HTML document. Compose frames into a timeline, render to MP4.
 
@@ -84,9 +84,9 @@ await render({
 
 Mature open-source framework. More powerful than Hyperframes but requires React knowledge.
 
-```bash
-npx create-video@latest
-```
+Use an existing Remotion project with dependencies already present. Remote
+starter bootstrap is `execution_unavailable`; ask the user to scaffold it in
+their own terminal when necessary.
 
 **Key concept:** React components are frames. Props drive content. Render locally or via Remotion Lambda (AWS) for scale.
 

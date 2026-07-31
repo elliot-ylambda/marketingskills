@@ -2,7 +2,7 @@
 name: competitor-profiling
 description: "When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor profile,' 'competitor research,' 'competitor analysis,' 'profile this competitor,' 'analyze competitor,' 'competitive intelligence,' 'competitor deep dive,' 'who are my competitors,' 'competitor landscape,' 'competitor dossier,' 'competitive audit,' or 'research these competitors.' Input is a list of competitor URLs. Output is structured competitor profile markdown files. For creating comparison/alternative pages from profiles, see competitors. For sales-specific battle cards, see sales-enablement."
 metadata:
-  version: 2.0.0
+  version: 2.0.1
 ---
 
 # Competitor Profiling
@@ -80,9 +80,9 @@ For each competitor URL, scrape key pages to extract positioning, features, pric
 
 #### Step 1: Map the site
 
-Use **Firecrawl `map`** (via the `magister-firecrawl` skill — gateway proxy
-`/proxy/firecrawl`, `POST v2/map`) to discover the competitor's site structure
-and identify key pages:
+Use **Firecrawl `map`** via the `magister-firecrawl` skill's typed Hosted Agent
+read action to discover the competitor's site structure and identify key pages.
+Never substitute a shell or raw-network request:
 
 ```
 firecrawl map → competitor URL

@@ -93,7 +93,10 @@ The `DATA` lives in a `<script type="application/json" id="review-data">` block 
 1. Copy `assets/creative-review-template.html` into the batch's output folder as `review.html` (e.g. `outputs/YYYY-MM-DD/review.html`).
 2. Replace the `DATA` object with the real project — concepts, frames, copy, grounding. Populate `image` paths for any frames you've rendered (keep them relative to the html file so the folder stays portable).
 3. Verify it renders: open it in a browser, click through every concept tab, both platform and handle toggles, and each frame in the storyboard.
-4. Deliver: hand off the folder (html + `images/`), or host it. For a client link, `vercel deploy` or any static host works — it's a single page with local assets.
+4. Deliver the folder (`html` + `images/`). Hosted publication is a separate
+   external mutation and is `execution_unavailable` from this asset workflow;
+   the user may upload the portable folder through their approved hosting
+   process.
 
 Keep the review page next to the markdown outputs, not instead of them: `INDEX.md` and the per-concept files remain the operator's record and the grounding audit trail; `review.html` is the approval surface built on top.
 
