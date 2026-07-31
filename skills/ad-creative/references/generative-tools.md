@@ -549,16 +549,12 @@ Render the same content across different aspect ratios:
 
 ### Getting Started
 
-Use an existing Remotion project with dependencies already present. Remote
-package bootstrap is not available from Hosted Agent. Local renders may use:
-
-```bash
-# Render a single video from the existing project
-npx remotion render src/index.ts MyComposition out/video.mp4
-
-# Batch render from data
-npx remotion render src/index.ts MyComposition --props='{"data": [...]}'
-```
+Use an existing Remotion project with dependencies and its browser already
+present. Remote package or browser bootstrap is not available from Hosted
+Agent. Inspect the project's checked-in render script before running it and
+continue only when it invokes project-owned binaries in offline mode. If the
+script, dependencies, or browser are absent—or the renderer attempts a
+download—return `execution_unavailable` instead of invoking a package runner.
 
 ---
 
