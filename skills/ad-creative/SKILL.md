@@ -2,7 +2,7 @@
 name: ad-creative
 description: "When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — for any paid advertising platform. Also use when the user mentions 'ad copy variations,' 'ad creative,' 'generate headlines,' 'RSA headlines,' 'bulk ad copy,' 'ad iterations,' 'creative testing,' 'ad performance optimization,' 'write me some ads,' 'Facebook ad copy,' 'Google ad headlines,' 'LinkedIn ad text,' 'static ads,' 'static ad concepts,' 'ad templates,' 'iMessage ad,' 'chat reveal ad,' 'fake DM ad,' 'ChatGPT ad,' 'Apple Notes ad,' 'AirDrop ad,' 'creative strategy,' 'creative roadmap,' 'creative retro,' 'hook writing,' 'creative review page,' 'present ad creative for approval,' 'motion video ad,' 'faceless video ad,' 'animated explainer ad,' 'motion collage ad,' or 'I need more ad variations.' Use this whenever someone needs to produce ad copy at scale or iterate on existing ads. For campaign strategy and targeting, see ads. For landing page copy, see copywriting."
 metadata:
-  version: 2.8.0
+  version: 2.8.2
 ---
 
 # Ad Creative
@@ -398,15 +398,16 @@ For pulling performance data and managing campaigns, see the [tools registry](..
 
 ### Workflow: Pull Data, Analyze, Generate
 
-```bash
-# 1. Pull recent ad performance
-node tools/clis/google-ads.js reports get --type ad_performance --date-range last_30_days
-
-# 2. Analyze output (identify top/bottom performers)
-# 3. Feed winning patterns into this skill
-# 4. Generate new variations
-# 5. Upload to platform
-```
+1. Load and follow
+   [`magister-google-ads`](../magister-google-ads/SKILL.md), using
+   `magister_integration_read` to retrieve recent ad performance. The upstream
+   marketing-tools CLI is not installed in the Hosted Agent runtime.
+2. Analyze the result to identify top and bottom performers.
+3. Feed winning patterns into this skill.
+4. Generate new variations.
+5. Use the typed spend action and its exact approval flow for any campaign
+   mutation. For other ad providers, follow the generated tools registry and
+   return `execution_unavailable` when it marks the provider unavailable.
 
 ---
 

@@ -5,31 +5,31 @@ Current versions of all skills. Agents can compare against local versions to che
 | Skill | Version | Last Updated |
 |-------|---------|--------------|
 | ab-testing | 2.0.0 | 2026-05-05 |
-| ad-creative | 2.8.0 | 2026-07-14 |
+| ad-creative | 2.8.2 | 2026-07-30 |
 | ai-seo | 2.2.0 | 2026-07-09 |
 | analytics | 2.0.0 | 2026-05-05 |
 | aso | 2.0.0 | 2026-05-05 |
-| churn-prevention | 2.0.0 | 2026-05-05 |
+| churn-prevention | 2.0.1 | 2026-07-30 |
 | co-marketing | 2.0.0 | 2026-05-05 |
 | cold-email | 2.0.0 | 2026-05-05 |
 | community-marketing | 2.0.0 | 2026-05-05 |
-| competitor-profiling | 2.0.0 | 2026-05-05 |
+| competitor-profiling | 2.0.1 | 2026-07-30 |
 | competitors | 2.0.1 | 2026-07-09 |
 | content-strategy | 2.0.0 | 2026-05-05 |
 | copy-editing | 2.0.0 | 2026-05-05 |
 | copywriting | 2.0.1 | 2026-06-16 |
 | cro | 2.0.0 | 2026-05-05 |
 | customer-research | 2.0.1 | 2026-07-10 |
-| directory-submissions | 2.0.0 | 2026-05-05 |
+| directory-submissions | 2.0.1 | 2026-07-30 |
 | emails | 2.0.0 | 2026-05-05 |
 | free-tools | 2.0.0 | 2026-05-05 |
-| image | 2.0.1 | 2026-05-18 |
+| image | 2.0.2 | 2026-07-30 |
 | launch | 2.0.1 | 2026-06-16 |
 | lead-magnets | 2.0.0 | 2026-05-05 |
 | marketing-council | 1.0.0 | 2026-07-06 |
 | marketing-ideas | 2.0.0 | 2026-05-05 |
 | marketing-loops | 1.2.0 | 2026-07-10 |
-| marketing-plan | 1.1.0 | 2026-05-29 |
+| marketing-plan | 1.1.1 | 2026-07-30 |
 | marketing-psychology | 2.0.0 | 2026-05-05 |
 | offers | 1.0.0 | 2026-06-16 |
 | onboarding | 2.0.0 | 2026-05-05 |
@@ -39,8 +39,8 @@ Current versions of all skills. Agents can compare against local versions to che
 | pricing | 2.0.1 | 2026-06-16 |
 | product-marketing | 2.1.0 | 2026-07-16 |
 | programmatic-seo | 2.0.0 | 2026-05-05 |
-| prospecting | 1.1.0 | 2026-07-13 |
-| public-relations | 1.0.0 | 2026-06-10 |
+| prospecting | 1.1.1 | 2026-07-30 |
+| public-relations | 1.0.1 | 2026-07-30 |
 | referrals | 2.0.0 | 2026-05-05 |
 | revops | 2.0.0 | 2026-05-05 |
 | sales-enablement | 2.0.1 | 2026-06-16 |
@@ -49,10 +49,15 @@ Current versions of all skills. Agents can compare against local versions to che
 | signup | 2.0.0 | 2026-05-05 |
 | site-architecture | 2.0.0 | 2026-05-05 |
 | sms | 1.0.0 | 2026-05-21 |
-| social | 2.2.0 | 2026-07-09 |
-| video | 2.1.0 | 2026-07-14 |
+| social | 2.2.1 | 2026-07-30 |
+| video | 2.1.1 | 2026-07-30 |
 
 ## Recent Changes
+
+### 2.8.13 (2026-07-30)
+
+- **Hosted Agent transport safety**: updated ad-creative (2.8.2), churn-prevention (2.0.1), competitor-profiling (2.0.1), directory-submissions (2.0.1), image (2.0.2), marketing-plan (1.1.1), prospecting (1.1.1), public-relations (1.0.1), social (2.2.1), and video (2.1.1) so their network-dependent workflows use reviewed Magister typed actions or return an explicit unavailable state; removed Hosted Agent reliance on local network CLIs, implicit package runners, loopback browser automation, package/model installers, direct provider requests, and remote media downloads.
+- **Release validation**: the official `skills-ref` validator now returns to the repository by absolute path after bootstrapping its temporary environment, so it validates the checked-out skills instead of `/tmp/skills/*`.
 
 ### 2.8.12 (2026-07-16)
 

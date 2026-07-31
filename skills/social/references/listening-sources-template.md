@@ -118,6 +118,7 @@ Save yourself the regret.
 
 - When asked for "today's top 10," output in the format defined in [listening.md](listening.md#the-daily-triage-loop)
 - For LinkedIn and X, use dev-browser with the persistent session (user is logged in)
-- For everything else, use the curl recipes in [listening.md](listening.md#sources--light-tooling-curl-recipes)
+- For everything else, use the typed-source guidance in
+  [listening.md](listening.md#sources--typed-hosted-agent-actions)
 - Default lookback: 24h. User can override.
 - Always ask before posting — output drafts, user approves and posts manually

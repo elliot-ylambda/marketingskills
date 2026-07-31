@@ -471,7 +471,8 @@ Industry-specific directories. Only submit if your product genuinely fits the ve
 After any submission goes live, verify the backlink exists and is dofollow. You can:
 
 1. **Manual:** Open the listing, right-click your product link, "Inspect" → check for `rel="nofollow"` or `rel="ugc"`. If absent, the link is dofollow.
-2. **curl:** `curl -sIL https://directory.com/your-listing | grep -i link`
+2. **Rendered HTML:** use `magister-firecrawl` through its typed Hosted Agent
+   read action and inspect the exact backlink anchor's `rel` attribute.
 3. **SEO tools:** Ahrefs Site Explorer → Backlinks → filter by this directory's domain.
 
 **Re-verify quarterly.** Directories sometimes change all outbound links to nofollow without warning — if DR stops moving, check whether your biggest inbound links have silently flipped.

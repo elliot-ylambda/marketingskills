@@ -5,6 +5,7 @@
 
 SKILLS_DIR="skills"
 SKILLS_REF_DIR="/tmp/agentskills/skills-ref"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "🔍 Validating Skills Using Official skills-ref Library"
 echo "========================================================"
@@ -38,8 +39,8 @@ fi
 # Activate the virtual environment
 source "$SKILLS_REF_DIR/.venv/bin/activate"
 
-# Return to the original directory
-cd "$(dirname "$0")"
+# Return to the repository even after the installer changed directories.
+cd "$SCRIPT_DIR"
 
 # Track results
 PASSED=0
