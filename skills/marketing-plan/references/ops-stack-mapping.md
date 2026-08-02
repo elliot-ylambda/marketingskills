@@ -97,17 +97,16 @@ The plan's Section 11 makes this thesis explicit by:
 
 | Tool | What it provides | Wired-at-client check |
 |---|---|---|
-| **Ahrefs API** | SEO data: keyword research, backlinks, competitor analysis | Required `AHREFS_API_KEY` in `.env` |
-| **DataForSEO API** | SERP data, keyword volume, competitor SERP analysis | Required API key |
-| **GA4 MCP** | Traffic by channel, conversion events, retention curves | Wired via gcp project + service account |
-| **GitHub MCP** | Repo work: marketing site (`site-name-promo` patterns), content authoring | Standard `gh` CLI auth + MCP server |
-| **Typefully MCP** | Social posting (LinkedIn, X, Threads, Bluesky) | Typefully account + API key |
-| **Google Ads MCP** | Ad account management, campaign creation, performance pulls | Wired post-budget-unlock |
-| **agent-browser** | Browser automation (form fills, screenshots, scraping) | CLI install: `npm install -g agent-browser` |
-| **dev-browser** | General-purpose browser automation | MCP server install |
-| **defuddle** | Clean markdown extraction from web pages | CLI install |
-| **Notion** | Internal knowledge directory access | Notion API key |
-| **Stripe MCP** | LTV math, paid-CAC reconciliation (cross-cuts to Revenue) | Stripe account + restricted key |
+| **Ahrefs** | SEO data: keyword research, backlinks, competitor analysis | Connected Magister integration + reviewed typed action |
+| **DataForSEO** | SERP data, keyword volume, competitor SERP analysis | Connected Magister integration + reviewed typed action |
+| **GA4** | Traffic by channel, conversion events, retention curves | Connected Magister integration + reviewed typed action |
+| **GitHub** | Repo work: marketing site (`site-name-promo` patterns), content authoring | Connected Magister integration + reviewed typed read/change action |
+| **Typefully** | Social posting (LinkedIn, X, Threads, Bluesky) | Connected Magister integration + exact approval for writes |
+| **Google Ads** | Ad account management, campaign creation, performance pulls | Connected Magister integration + owner/admin, budget, paused-first, and exact spend approval gates |
+| **Browser automation** | Form fills, screenshots, rendered-page research | Use only an advertised typed browser action; otherwise `execution_unavailable` |
+| **Web extraction** | Clean page content for analysis | Use an advertised typed Firecrawl or web-context action; never install a network CLI from sandboxed shell |
+| **Notion** | Internal knowledge directory access | Connected Magister integration + reviewed typed action |
+| **Stripe** | LTV math, paid-CAC reconciliation (cross-cuts to Revenue) | Connected Magister integration + reviewed typed action |
 
 ### Activation tooling
 

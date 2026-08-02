@@ -197,7 +197,8 @@ Cross-reference both for high-confidence tech stack signals.
 - Public API, no scraping concerns
 - High signal quality (a starred repo = explicit interest)
 - Forks are an even stronger signal (intent to modify, not just bookmark)
-- Bundled `github-prospects.js` CLI handles pagination + enrichment + CSV output
+- The reviewed `magister-github` integration can retrieve bounded, paginated
+  repository interest data; enrichment remains a separate typed capability
 - Free with 5,000 req/hr authenticated rate limit
 
 **Watch out for**:

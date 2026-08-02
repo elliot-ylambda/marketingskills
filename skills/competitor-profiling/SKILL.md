@@ -2,7 +2,7 @@
 name: competitor-profiling
 description: "When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor profile,' 'competitor research,' 'competitor analysis,' 'profile this competitor,' 'analyze competitor,' 'competitive intelligence,' 'competitor deep dive,' 'who are my competitors,' 'competitor landscape,' 'competitor dossier,' 'competitive audit,' or 'research these competitors.' Input is a list of competitor URLs. Output is structured competitor profile markdown files. For creating comparison/alternative pages from profiles, see competitors. For sales-specific battle cards, see sales-enablement."
 metadata:
-  version: 2.0.0
+  version: 2.0.1
 ---
 
 # Competitor Profiling
@@ -80,10 +80,12 @@ For each competitor URL, scrape key pages to extract positioning, features, pric
 
 #### Step 1: Map the site
 
-Use **Firecrawl Map** to discover the competitor's site structure and identify key pages:
+Use **Firecrawl `map`** via the `magister-firecrawl` skill's typed Hosted Agent
+read action to discover the competitor's site structure and identify key pages.
+Never substitute a shell or raw-network request:
 
 ```
-firecrawl_map → competitor URL
+firecrawl map → competitor URL
 ```
 
 From the map, identify and prioritize these page types:
@@ -98,10 +100,11 @@ From the map, identify and prioritize these page types:
 
 #### Step 2: Scrape key pages
 
-Use **Firecrawl Scrape** on each identified page:
+Use **Firecrawl `scrape`** (via the `magister-firecrawl` skill — `POST
+v2/scrape`, markdown format; it renders JavaScript) on each identified page:
 
 ```
-firecrawl_scrape → each key page URL
+firecrawl scrape → each key page URL
 ```
 
 Save each result to `competitor-profiles/raw/<competitor-slug>/<YYYY-MM-DD>/scrapes/<page-name>.md` before extracting fields.
@@ -120,7 +123,8 @@ Extract from each page:
 
 #### Step 3: Scrape competitor reviews (optional but high-value)
 
-Use **Firecrawl Scrape** or **Firecrawl Search** to find:
+Find the review URLs with web search (Brave/Exa), then use **Firecrawl
+`scrape`** on:
 - G2 reviews page for the competitor
 - Capterra reviews page
 - Product Hunt launch page

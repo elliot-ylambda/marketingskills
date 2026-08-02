@@ -81,7 +81,12 @@ Three ways to produce it, in order of control:
 
 ### Route 1: Off-the-shelf skill (fastest)
 
-Gooseworks distributes their pipeline as an installable agent skill — `npx gooseworks install --all`, then invoke the goose-ads skill from your agent. It handles rendering, recording, SFX, and stitching end to end. Use this to validate the format before building anything custom. (Their ads-skills source repo is public but carries no open-source license — treat it as reference reading, not code to vendor.)
+Gooseworks distributes their pipeline as a separately installed agent skill.
+Hosted Agent must not install or invoke it through a package runner; this route
+is `execution_unavailable` unless the capability is already installed and
+advertised by the host. Their ads-skills source repository is public but has no
+open-source license, so treat it as reference reading rather than code to
+vendor.
 
 ### Route 2: Code-based pipeline (full control)
 

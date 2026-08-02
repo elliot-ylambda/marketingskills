@@ -2,7 +2,7 @@
 name: churn-prevention
 description: "When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retention strategies. Also use when the user mentions 'churn,' 'cancel flow,' 'offboarding,' 'save offer,' 'dunning,' 'failed payment recovery,' 'win-back,' 'retention,' 'exit survey,' 'pause subscription,' 'involuntary churn,' 'people keep canceling,' 'churn rate is too high,' 'how do I keep users,' or 'customers are leaving.' Use this whenever someone is losing subscribers or wants to build systems to prevent it. For post-cancel win-back email sequences, see emails. For in-app upgrade paywalls, see paywalls."
 metadata:
-  version: 2.0.0
+  version: 2.0.1
 ---
 
 # Churn Prevention
@@ -402,15 +402,17 @@ For implementation, see the [tools registry](../../tools/REGISTRY.md).
 | **Recurly** | Built-in | Built-in | Built-in |
 | **Braintree** | Manual config | Manual | Via gateway |
 
-### Related CLI Tools
+### Related Hosted Integration Capabilities
 
-| Tool | Use For |
-|------|---------|
-| `stripe` | Subscription management, dunning config, payment retries |
-| `customer-io` | Dunning email sequences, retention campaigns |
-| `posthog` | Cancel flow A/B tests via feature flags, funnel analytics |
-| `mixpanel` / `ga4` | Usage tracking, churn signal analysis |
-| `segment` | Event routing for health scoring |
+| Capability | Use For | Hosted execution |
+|------|---------|---------|
+| Stripe | Subscription state and reviewed billing changes | Follow `magister-stripe` typed read/change actions |
+| Customer.io | Dunning sequences and retention campaigns | Follow `magister-customerio` typed actions |
+| PostHog | Cancel-flow flags and funnel analytics | Follow `magister-posthog` typed actions |
+| Mixpanel / GA4 | Usage and churn-signal analysis | Follow their generated typed integration guides |
+| Segment | Event routing for health scoring | `execution_unavailable` until the generated registry advertises a reviewed action |
+
+Never fall back to a provider CLI, local credential, or direct API request.
 
 ---
 

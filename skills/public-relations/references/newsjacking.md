@@ -142,31 +142,17 @@ Newsjacking decays fast. Approximate windows:
 
 ## Sources & Tooling
 
-Reuses tooling from the `social` skill's listening workflow. Same install: `brew install jq`.
+Reuse the `social` skill's typed listening workflow. Shell networking is
+unavailable.
 
-### Google News RSS (no auth)
-
-```bash
-# Replace QUERY with topic (use + for spaces, %22 for quotes)
-curl -s "https://news.google.com/rss/search?q=QUERY&hl=en-US&gl=US&ceid=US:en" \
-  | xmllint --xpath "//item[position()<11]" - 2>/dev/null
-```
-
-### Hacker News (Algolia) for tech stories
-
-```bash
-SINCE=$(($(date +%s) - 86400))
-curl -s "https://hn.algolia.com/api/v1/search_by_date?query=QUERY&tags=story&numericFilters=created_at_i>${SINCE}" \
-  | jq '.hits[] | {title, url, points, num_comments, created_at, hn_url: ("https://news.ycombinator.com/item?id="+.objectID)}'
-```
-
-### Reddit (for category-specific subs)
-
-```bash
-curl -s -A "newsjack/1.0" \
-  "https://www.reddit.com/r/SUBREDDIT/top.json?t=day&limit=15" \
-  | jq '.data.children[].data | {title, url, score, num_comments, created_utc}'
-```
+- Use `magister-exa` through `magister_integration_read` for recent Google News
+  and web results.
+- Use `magister-social-research` through `magister_integration_read` for its
+  documented Reddit and social-search routes.
+- Use `magister-firecrawl` through `magister_integration_read` for a known news,
+  Hacker News, or RSS page that needs rendering/extraction.
+- If the exact source cannot be represented by one of those reviewed actions,
+  return `execution_unavailable` and ask the user for an export or pasted URLs.
 
 ### Journalist research (browser-driven)
 

@@ -37,7 +37,10 @@ If the user gives an app name instead of a URL, search the web for:
 
 ### Fetch the listing
 
-Use WebFetch to retrieve the listing page. Extract every available field:
+Use Firecrawl (`magister-firecrawl` skill) to retrieve the listing page —
+store pages render client-side, and Firecrawl returns the JS-rendered content
+as markdown. Fall back to WebFetch only if Firecrawl is unavailable. Extract
+every available field:
 
 **Apple App Store fields:**
 
@@ -79,19 +82,20 @@ Use WebFetch to retrieve the listing page. Extract every available field:
 - Data safety section
 - Languages listed
 
-If WebFetch returns incomplete data (stores render client-side), note gaps and
-work with what's available. Ask the user to paste missing fields if critical.
+If the fetch returns incomplete data, note gaps and work with what's
+available. Ask the user to paste missing fields if critical.
 
 ### Visual asset assessment
 
-WebFetch cannot extract screenshot images or caption text. **Take a screenshot
-of the listing page** to get visual data:
+Text scrapes cannot extract screenshot images or caption text. **Take a
+screenshot of the listing page** (`magister-screenshot` skill — full-page
+capture via Urlbox) to get visual data:
 
-1. Navigate to the listing URL and capture a full-page screenshot
+1. Capture a full-page screenshot of the listing URL
 2. Assess the screenshot for: icon quality, screenshot count, caption text,
    messaging quality, preview video presence, feature graphic (Google Play)
-3. If browser tools are unavailable, ask the user to share a screenshot of the
-   listing page
+3. If screenshot capture is unavailable, ask the user to share a screenshot of
+   the listing page
 
 **Promotional text (Apple):** This 170-char field appears above the description
 but is often indistinguishable from it in scraped HTML. If you cannot confirm
