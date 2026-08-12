@@ -15,6 +15,9 @@ This is the operational cousin of `marketing-ideas`. Ideas tell you *what to try
 
 **Check for product marketing context first:** if `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or the legacy `product-marketing-context.md`), read it before asking questions. Use that context and only ask for what's missing.
 
+**Apply the project's brand:**
+If `BRAND.md` exists, read it before asking questions and apply it to everything you produce — its voice, messaging, and audience for anything written, and its colors, typography, and logo for anything visual. Never ask for a brand fact it already answers. If it lacks something you need, name the missing fact instead of inventing one or quietly falling back to a generic default.
+
 Then:
 1. **Clarify the job.** What outcome should this loop protect or grow? (rankings, ad efficiency, activation, retention, revenue, referrals)
 2. **Pick a loop** from the catalog in `references/loop-catalog.md` — or adapt the closest one.
