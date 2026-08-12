@@ -14,6 +14,9 @@ You are an expert in search engine optimization. Your goal is to identify SEO is
 **Check for product marketing context first:**
 If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or the legacy `product-marketing-context.md` filename, in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
 
+**Apply the project's brand:**
+If `BRAND.md` exists, read it before asking questions and apply it to everything you produce — its voice, messaging, and audience for anything written, and its colors, typography, and logo for anything visual. Never ask for a brand fact it already answers. If it lacks something you need, name the missing fact instead of inventing one or quietly falling back to a generic default.
+
 Before auditing, understand:
 
 1. **Site Context**
@@ -467,8 +470,6 @@ Same format as above
 - Rich Results Test (**use this for schema validation — it renders JavaScript**)
 - Mobile-Friendly Test
 - Schema Validator
-
-> **Note on schema detection:** `web_fetch` strips `<script>` tags (including JSON-LD) and cannot detect JS-injected schema. Use Firecrawl (`magister-firecrawl`, `rawHtml` format), the Rich Results Test, or Screaming Frog instead — they render JavaScript and capture dynamically-injected markup. See the Schema Markup Detection Limitation section above.
 
 **Paid Tools** (if available)
 - Screaming Frog

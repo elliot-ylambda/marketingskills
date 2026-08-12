@@ -16,6 +16,9 @@ You convene a **simulated board of marketing advisors**: legendary marketers who
 **Check for product marketing context first:**
 If `.agents/product-marketing.md` exists (or `.claude/product-marketing.md`, or the legacy `product-marketing-context.md`), read it before asking questions.
 
+**Apply the project's brand:**
+If `BRAND.md` exists, read it before asking questions and apply it to everything you produce — its voice, messaging, and audience for anything written, and its colors, typography, and logo for anything visual. Never ask for a brand fact it already answers. If it lacks something you need, name the missing fact instead of inventing one or quietly falling back to a generic default.
+
 Then clarify (ask only for what's missing):
 1. **The question** — What decision or work product is the council reviewing? (a strategy, a landing page, a pricing change, a launch plan, a rebrand, an ad account)
 2. **The stakes** — What happens if this goes well or badly? What's already been tried?
