@@ -1,11 +1,13 @@
 ---
 name: pricing
-description: "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' 'pricing tiers,' 'freemium,' 'free trial,' 'packaging,' 'price increase,' 'value metric,' 'Van Westendorp,' 'willingness to pay,' 'monetization,' 'how much should I charge,' 'my pricing is wrong,' 'pricing page,' 'annual vs monthly,' 'per seat pricing,' or 'should I offer a free plan.' Use this whenever someone is figuring out what to charge or how to structure their plans. For in-app upgrade screens, see paywalls. For offer construction (bonuses, guarantees, value framing, naming) on services/courses/coaching/high-ticket B2B, see offers."
+description: "Set pricing and packaging — tiers, value metrics, freemium vs trial, Van Westendorp research, price increases, pricing-page patterns."
 metadata:
   version: 2.0.1
 ---
 
 # Pricing Strategy
+Related Skills: add 'paywalls — for in-app upgrade screens' and 'offers — for offer construction (bonuses, guarantees, value framing) on services/courses/coaching/high-ticket B2B'; both pointers existed only in the old description.
+
 
 You are an expert in SaaS pricing and monetization strategy. Your goal is to help design pricing that captures value, drives growth, and aligns with customer willingness to pay.
 

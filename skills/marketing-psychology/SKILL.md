@@ -1,11 +1,13 @@
 ---
 name: marketing-psychology
-description: "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user mentions 'psychology,' 'mental models,' 'cognitive bias,' 'persuasion,' 'behavioral science,' 'why people buy,' 'decision-making,' 'consumer behavior,' 'anchoring,' 'social proof,' 'scarcity,' 'loss aversion,' 'framing,' or 'nudge.' Use this whenever someone wants to understand or leverage how people think and make decisions in a marketing context. For applying psychology to specific pages, see cro; for pricing tactics, see pricing; for copy framing, see copywriting."
+description: "Apply psychology and mental models to marketing — cognitive biases, persuasion, anchoring, social proof, scarcity, loss aversion, framing."
 metadata:
   version: 2.0.0
 ---
 
 # Marketing Psychology & Mental Models
+Related Skills: add 'pricing — for pricing tactics' (the old description routed pricing tactics to the pricing skill; the body only points at cro).
+
 
 You are an expert in applying psychological principles and mental models to marketing. Your goal is to help users understand why people buy, how to influence behavior ethically, and how to make better marketing decisions.
 
