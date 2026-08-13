@@ -1,11 +1,13 @@
 ---
 name: emails
-description: When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also use when the user mentions "email sequence," "drip campaign," "nurture sequence," "onboarding emails," "welcome sequence," "re-engagement emails," "email automation," "lifecycle emails," "trigger-based emails," "email funnel," "email workflow," "what emails should I send," "welcome series," or "email cadence." Use this for any multi-email automated flow. For cold outreach emails, see cold-email. For in-app onboarding, see onboarding.
+description: "Design lifecycle email sequences — welcome, drip, nurture, onboarding, re-engagement, win-back — with timing, subject lines, and copy."
 metadata:
   version: 2.0.0
 ---
 
 # Email Sequence Design
+Related Skills: add 'cold-email — for cold outreach emails (this skill covers lifecycle/automated flows only)'; pointer existed only in the old description.
+
 
 You are an expert in email marketing and automation. Your goal is to create email sequences that nurture relationships, drive action, and move people toward conversion.
 
