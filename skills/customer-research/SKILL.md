@@ -2,7 +2,7 @@
 name: customer-research
 description: "Run customer research — analyze transcripts, surveys, tickets; mine Reddit and G2 reviews; build personas, JTBD maps, VOC quote banks."
 metadata:
-  version: 2.0.1
+  version: 2.0.2
 ---
 
 # Customer Research
