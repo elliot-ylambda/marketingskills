@@ -2,7 +2,7 @@
 name: ad-creative
 description: "Generate and iterate ad creative at scale — RSA headlines, Meta/TikTok copy, static ad batches, iMessage and motion video ads, review pages."
 metadata:
-  version: 2.8.2
+  version: 2.9.0
 ---
 
 # Ad Creative
@@ -274,6 +274,9 @@ Track what was learned and what's being tested:
 - Claims without specificity ("Best," "Leading," "Top")
 - All caps or excessive punctuation
 - Clickbait that the landing page can't deliver on
+- Shortened or nicknamed product names — use the exact product name the
+  brief gives, in every field of every concept, unless a short form is
+  explicitly approved
 
 ### Descriptions That Convert
 
@@ -282,6 +285,19 @@ Descriptions should complement headlines, not repeat them. Use descriptions to:
 - Handle objections ("No credit card required," "Free forever for small teams")
 - Reinforce CTAs ("Start your free trial today")
 - Add urgency when genuine ("Limited to first 500 signups")
+
+### Test Hypotheses That Can Lose
+
+When a concept ships with a test hypothesis, write one that a result can
+prove wrong. "This will resonate with renters" cannot lose; "beats the
+control on CTR among renters" can.
+
+- Name the metric (CTR, CVR, CPA, thumb-stop rate) and the comparison —
+  against which control or sibling concept, in which audience
+- State the expected direction, and a magnitude when a baseline exists
+  ("+15% CTR vs. Concept A")
+- The hypothesis should follow from the angle's motivation, so a win or a
+  loss teaches you something about the audience, not just the asset
 
 ---
 

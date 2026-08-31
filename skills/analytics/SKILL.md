@@ -2,7 +2,7 @@
 name: analytics
 description: "Set up or audit tracking — GA4, GTM, Mixpanel, Segment; tracking plans, event naming, UTM conventions, conversion and attribution debugging."
 metadata:
-  version: 2.0.0
+  version: 2.1.0
 ---
 
 # Analytics Tracking
@@ -46,6 +46,23 @@ Before implementing tracking, understand:
 - Validate implementation
 - Monitor for issues
 - Clean data > more data
+
+### 5. Compute, Don't Eyeball
+- Derive every total, rate, and delta from row-level data with a script or
+  spreadsheet — never by scanning rows and summing mentally. One silently
+  dropped row corrupts every figure downstream of it.
+- Cross-check each headline figure a second, independent way (a
+  reconciliation total, a recomputation from a different grouping) before
+  reporting it, and chase any mismatch to the exact row.
+- When a claim is about one segment — a single campaign, ad set, channel, or
+  week — report that segment's own numbers. Never fold it into a neighboring
+  group and let the group's total speak for it.
+
+### 6. Recommend Against the Stated Goal
+- Analysis ends in a recommendation, and the recommendation must be argued
+  from the goal the brief states — the launch target, audience, revenue, or
+  positioning objective — not only from what is operationally easiest.
+  Name which stated goal each option serves and what it trades away.
 
 ---
 

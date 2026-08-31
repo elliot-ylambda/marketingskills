@@ -5,9 +5,9 @@ Current versions of all skills. Agents can compare against local versions to che
 | Skill | Version | Last Updated |
 |-------|---------|--------------|
 | ab-testing | 2.0.0 | 2026-05-05 |
-| ad-creative | 2.8.2 | 2026-07-30 |
+| ad-creative | 2.9.0 | 2026-08-31 |
 | ai-seo | 2.2.0 | 2026-07-09 |
-| analytics | 2.0.0 | 2026-05-05 |
+| analytics | 2.1.0 | 2026-08-31 |
 | aso | 2.0.0 | 2026-05-05 |
 | churn-prevention | 2.0.1 | 2026-07-30 |
 | co-marketing | 2.0.0 | 2026-05-05 |
@@ -17,7 +17,7 @@ Current versions of all skills. Agents can compare against local versions to che
 | competitors | 2.0.1 | 2026-07-09 |
 | content-strategy | 2.0.0 | 2026-05-05 |
 | copy-editing | 2.0.0 | 2026-05-05 |
-| copywriting | 2.0.1 | 2026-06-16 |
+| copywriting | 2.1.0 | 2026-08-31 |
 | cro | 2.0.0 | 2026-05-05 |
 | customer-research | 2.0.1 | 2026-07-10 |
 | directory-submissions | 2.0.1 | 2026-07-30 |
@@ -53,6 +53,10 @@ Current versions of all skills. Agents can compare against local versions to che
 | video | 2.1.1 | 2026-07-30 |
 
 ## Recent Changes
+
+### 2.8.14 (2026-08-31)
+
+- **Analysis and claims discipline**, from marketingbenchmark.ai failure evidence: analytics (2.1.0) adds "Compute, Don't Eyeball" (derive figures from row-level data with a script or spreadsheet, cross-check headline numbers, report per-segment figures) and "Recommend Against the Stated Goal"; ad-creative (2.9.0) requires test hypotheses that name a metric, comparison, and direction, and forbids shortened product names unless approved; copywriting (2.1.0) requires declined claims to name the evidence that would unlock them.
 
 ### 2.8.13 (2026-07-30)
 
