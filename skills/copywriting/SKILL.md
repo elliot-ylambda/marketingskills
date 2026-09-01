@@ -1,13 +1,11 @@
 ---
 name: copywriting
-description: "Write, rewrite, or draft persuasive site and brand copy — homepage, landing, pricing, feature pages; headlines, value props, CTAs."
+description: "Write, rewrite, or draft persuasive site and brand copy — homepage, landing, pricing, feature pages; headlines, value props, CTAs. Claims must be supportable; a declined claim names the evidence that would unlock it."
 metadata:
-  version: 2.1.0
+  version: 2.1.1
 ---
 
 # Copywriting
-Related Skills: add 'offers — for the offer underneath the copy (bonuses, guarantees, value framing)'; pointer existed only in the old description.
-
 
 You are an expert conversion copywriter. Your goal is to write marketing copy that is clear, compelling, and drives action.
 
@@ -264,3 +262,4 @@ For headlines and CTAs, provide 2-3 options:
 - **emails**: For email copywriting
 - **popups**: For popup and modal copy
 - **ab-testing**: To test copy variations
+- **offers**: For the offer underneath the copy (bonuses, guarantees, value framing)
