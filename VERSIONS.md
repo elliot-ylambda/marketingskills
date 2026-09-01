@@ -5,7 +5,7 @@ Current versions of all skills. Agents can compare against local versions to che
 | Skill | Version | Last Updated |
 |-------|---------|--------------|
 | ab-testing | 2.0.0 | 2026-05-05 |
-| ad-creative | 2.9.0 | 2026-08-31 |
+| ad-creative | 2.9.1 | 2026-08-31 |
 | ai-seo | 2.2.0 | 2026-07-09 |
 | analytics | 2.1.0 | 2026-08-31 |
 | aso | 2.0.0 | 2026-05-05 |
@@ -17,7 +17,7 @@ Current versions of all skills. Agents can compare against local versions to che
 | competitors | 2.0.1 | 2026-07-09 |
 | content-strategy | 2.0.0 | 2026-05-05 |
 | copy-editing | 2.0.0 | 2026-05-05 |
-| copywriting | 2.1.0 | 2026-08-31 |
+| copywriting | 2.1.1 | 2026-08-31 |
 | cro | 2.0.0 | 2026-05-05 |
 | customer-research | 2.0.1 | 2026-07-10 |
 | directory-submissions | 2.0.1 | 2026-07-30 |
@@ -53,6 +53,19 @@ Current versions of all skills. Agents can compare against local versions to che
 | video | 2.1.1 | 2026-07-30 |
 
 ## Recent Changes
+
+### 2.8.15 (2026-08-31)
+
+- **Operative rules surfaced in catalog descriptions**: ad-creative (2.9.1) and
+  copywriting (2.1.1) now carry their core discipline in the frontmatter
+  description — falsifiable test hypotheses (metric, comparison, direction) and
+  supportable claims / declines naming their unlock evidence. Hosted-agent
+  prompts include only skill names and descriptions (bodies are read on
+  demand), so a rule that must shape behavior before the skill file is opened
+  has to live in the description line.
+- copywriting (2.1.1) also repairs an editing artifact from 2.8.13: a
+  leftover editor's note under the H1 is removed and the `offers` pointer it
+  described is added to the Related Skills list.
 
 ### 2.8.14 (2026-08-31)
 
