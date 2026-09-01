@@ -2,7 +2,7 @@
 name: marketing-plan
 description: "Produce an fCMO-grade 12-month marketing plan — 13 AARRR sections, 90-day roadmap, budget math, ops stack — as a Notion-ready doc."
 metadata:
-  version: 1.1.1
+  version: 1.2.0
 ---
 
 # Marketing Plan
@@ -93,6 +93,11 @@ Full primer in `references/aarrr-framework.md`. Quick rule:
 - **Revenue** = monetization (pricing, upsells, bundles, ACV expansion)
 
 Brand and content are **cross-cutting**, not their own AARRR stage — they serve every stage.
+
+When the plan defines stage metrics, every rate divides matching closed
+windows: an activation rate counts only cohorts whose observation window has
+ended (a trial still inside its window is pending, not failed — keep it out of
+the denominator and label it pending).
 
 ## The current-state rubric
 

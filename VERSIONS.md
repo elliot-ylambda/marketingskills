@@ -7,7 +7,7 @@ Current versions of all skills. Agents can compare against local versions to che
 | ab-testing | 2.0.0 | 2026-05-05 |
 | ad-creative | 2.9.1 | 2026-08-31 |
 | ai-seo | 2.2.0 | 2026-07-09 |
-| analytics | 2.1.0 | 2026-08-31 |
+| analytics | 2.2.0 | 2026-08-31 |
 | aso | 2.0.0 | 2026-05-05 |
 | churn-prevention | 2.0.1 | 2026-07-30 |
 | co-marketing | 2.0.0 | 2026-05-05 |
@@ -29,7 +29,7 @@ Current versions of all skills. Agents can compare against local versions to che
 | marketing-council | 1.0.0 | 2026-07-06 |
 | marketing-ideas | 2.0.0 | 2026-05-05 |
 | marketing-loops | 1.2.0 | 2026-07-10 |
-| marketing-plan | 1.1.1 | 2026-07-30 |
+| marketing-plan | 1.2.0 | 2026-08-31 |
 | marketing-psychology | 2.0.0 | 2026-05-05 |
 | offers | 1.0.0 | 2026-06-16 |
 | onboarding | 2.0.0 | 2026-05-05 |
@@ -53,6 +53,15 @@ Current versions of all skills. Agents can compare against local versions to che
 | video | 2.1.1 | 2026-07-30 |
 
 ## Recent Changes
+
+### 2.8.16 (2026-08-31)
+
+- **Matched observation windows**: analytics (2.2.0) adds the principle that
+  rate and efficiency metrics divide a numerator and denominator covering the
+  same closed window (never full-period spend by partial-period results), and
+  that cohort rates exclude immature cohorts as pending; its description
+  carries the operative line. marketing-plan (1.2.0) applies the same rule to
+  AARRR stage metrics — activation rates count only closed cohorts.
 
 ### 2.8.15 (2026-08-31)
 
