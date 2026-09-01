@@ -1,8 +1,8 @@
 ---
 name: analytics
-description: "Set up or audit tracking — GA4, GTM, Mixpanel, Segment; tracking plans, event naming, UTM conventions, conversion and attribution debugging."
+description: "Set up or audit tracking — GA4, GTM, Mixpanel, Segment; tracking plans, event naming, UTM conventions, conversion and attribution debugging. Rate metrics divide matching closed windows — never full-period spend by partial-period results."
 metadata:
-  version: 2.1.0
+  version: 2.2.0
 ---
 
 # Analytics Tracking
@@ -58,7 +58,17 @@ Before implementing tracking, understand:
   week — report that segment's own numbers. Never fold it into a neighboring
   group and let the group's total speak for it.
 
-### 6. Recommend Against the Stated Goal
+### 6. Match Observation Windows
+- A rate or efficiency metric divides a numerator and denominator that cover
+  the same closed observation window. Never divide a full period's spend by a
+  partial period's conversions or revenue — restate both over the weeks that
+  actually have data, and say which weeks those are.
+- Cohort rates use only cohorts whose observation window has ended. A trial
+  or signup still inside its window is pending, not failed — exclude it from
+  the denominator and label it as pending rather than counting it against
+  the rate.
+
+### 7. Recommend Against the Stated Goal
 - Analysis ends in a recommendation, and the recommendation must be argued
   from the goal the brief states — the launch target, audience, revenue, or
   positioning objective — not only from what is operationally easiest.
